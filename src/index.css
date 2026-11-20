@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #0b1220;
+}
+
+@keyframes kenburns {
+  0% { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.15) translate(-3%, -2%); }
+}
+
+@keyframes ping-slow {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(3); opacity: 0; }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.cam-pin {
+  display: block;
+  width: 14px;
+  height: 14px;
+  border-radius: 9999px;
+  background: #ef4444;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+  animation: pin-pulse 2s infinite;
+  cursor: pointer;
+}
+.cam-pin-active {
+  background: #38bdf8;
+  width: 18px;
+  height: 18px;
+  margin: -2px;
+  animation-name: pin-pulse-active;
+}
+@keyframes pin-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+  100% { box-shadow: 0 0 0 14px rgba(239, 68, 68, 0); }
+}
+@keyframes pin-pulse-active {
+  0% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.8); }
+  100% { box-shadow: 0 0 0 18px rgba(56, 189, 248, 0); }
+}
+.leaflet-tooltip {
+  background: #0f172a;
+  color: #e2e8f0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.leaflet-tooltip-top:before { border-top-color: #0f172a; }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
+/* ---- keyless live cam map ---- */
+.cam-cluster {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 35% 35%, #38bdf8, #0369a1);
+  color: #fff;
+  font: 700 12px/1 system-ui, sans-serif;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 0 0 6px rgba(56, 189, 248, 0.25), 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  background: #0f172a;
+  color: #e2e8f0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+.leaflet-popup-content { margin: 10px; }
+.leaflet-container a.leaflet-popup-close-button { color: #94a3b8; }
+.leaflet-control-attribution { font-size: 10px; }
+
+/* Dark basemap: OpenStreetMap tiles recolored with a CSS filter (keyless).
+   Applied only to the tile pane, so markers/popups stay untouched. */
+.dark-tiles {
+  filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
+}
